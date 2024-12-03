@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Artist Portfolio</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="#about">About Me</a></li>
+        <li><a href="#animations">Animations</a></li>
+        <li><a href="#traditional">Traditional</a></li>
+        <li><a href="#digital">Digital</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- About Me Section -->
+    <section id="about" class="cover" style="background-image: url('phosphene_1.PNG');" onclick="toggleInfo(this)">
+  		<div id="about-container" class="text-box">
+   			<p class="about-text">
+     		Welcome to my portfolio! I'm an artist passionate about creating unique pieces in various styles. 
+      		I specialize in traditional and digital art, as well as animations.
+   		 	</p>
+ 		</div>
+	</section>
+
+
+    <!-- Animations Section -->
+    <section id="animations" class="cover" style="background-image: url('phosphene_wink.gif');">
+      <div class="text-box">
+        <h1>Animations</h1>
+        <p>Explore my animations that bring creativity to life.</p>
+      </div>
+    </section>
+
+    <!-- Traditional Section -->
+    <section id="traditional" class="cover" style="background-image: url('phosphene_paint.jpg');">
+      <div class="text-box">
+        <h1>Traditional Art</h1>
+        <p>Take a look at my traditional art pieces crafted with love and skill.</p>
+      </div>
+    </section>
+
+    <!-- Digital Section -->
+    <section id="digital" class="cover" style="background-image: url('vtuber.PNG');">
+      <div class="text-box">
+        <h1>Digital Art</h1>
+        <p>Check out my digital artwork that showcases my imaginative side.</p>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="cover" style="background-image: url('phosphene_contact.PNG');">
+      <div class="text-box">
+        <h1>Contact Me</h1>
+        <form id="contactForm">
+          <input type="text" id="name" placeholder="Your Name" required>
+          <input type="email" id="email" placeholder="Your Email" required>
+          <textarea id="message" placeholder="Your Message" required></textarea>
+          <button type="submit">Send</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Your Name. All rights reserved.</p>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
