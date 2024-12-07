@@ -26,7 +26,7 @@
     	<div id="aboutme" class="dropdown-content">
 			<button class="close-btn">X</button>
 			<div class="gallery">
-			  <img src="pfp.jpg" alt="Gallery Image 1">
+			  <img src="pfp.jpg" alt="Gallery Image 1" height="50%" width="auto">
 			</div>
 			<p class="about-text">
      		Welcome to my portfolio! I'm an artist passionate about creating unique pieces in various styles. 
@@ -42,13 +42,14 @@
         <div id="animationex" class="dropdown-content">
 			<button class="close-btn">X</button>
             <div class="video-gallery">
-                <button class="arrow left" onclick="changeVideo(event, -1)">&#10094;</button>
                 <div class="video-gallery-container">
+					<button class="arrow left" onclick="changeVideo(event, -1)">&#10094;</button>
                     <!-- Embedding YouTube videos -->
                     <iframe src="https://www.youtube.com/embed/HnDXGzY0JfQ" class="gallery-video" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     <iframe src="https://www.youtube.com/embed/38EXql4OQ_Y" class="gallery-video" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+					<button class="arrow right" onclick="changeVideo(event, 1)">&#10095;</button>
                 </div>
-                <button class="arrow right" onclick="changeVideo(event, 1)">&#10095;</button>
+                
             </div>
             <p class="about-text">
                 Welcome to my portfolio! I'm an artist passionate about creating unique pieces in various styles.
@@ -100,21 +101,22 @@
 
 
     <!-- Contact Section -->
-    <section id="contact" class="cover" style="background-image: url('phosphene_contact.png');">
-      <div class="text-box">
-        <h1>Contact Me</h1>
-        <form id="contactForm">
-          <input type="text" id="name" placeholder="Your Name" required>
-          <input type="email" id="email" placeholder="Your Email" required>
-          <textarea id="message" placeholder="Your Message" required></textarea>
-          <button type="submit">Send</button>
-        </form>
-      </div>
-    </section>
+    <div class="dropdown">
+        <button id="contact" class="dropbtn" style="background-image: url('phosphene_contact.png');"></button>
+        <div id="contactcode" class="dropdown-content">
+			<button class="close-btn">X</button>
+            <a href="https://linktr.ee/phosphenes.doodles">
+			  <img src="contactQR.png" alt="Description of Image" height="50%" width="auto">
+			</a>
+            <p class="about-text">
+                Scan the QR code or click the image for how to contact me.
+            </p>
+        </div>
+    </div>
   </main>
 
   <footer>
-    <p>&copy; 2024 Your Name. All rights reserved.</p>
+    <p>&copy; 2024 Phosphene. All rights reserved.</p>
   </footer>
   <script src="script.js"></script>
 </body>
