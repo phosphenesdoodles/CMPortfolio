@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Art Portfolio</title>
+    <style>
+        /* Gallery styling to fit all galleries on the page */
+        .gallery {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-top: 20px;
+            max-height: calc(100vh - 80px); /* Adjusted for the gallery size */
+        }
+
+        .gallery-img {
+            max-width: 90%;
+            max-height: 80%;
+            object-fit: contain;
+            border-radius: 5px;
+            display: none; /* Initially hide all images */
+            transition: opacity 0.5s ease;
+        }
+
+        .arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 30px;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            z-index: 3;
+        }
+
+        .left {
+            left: 10px;
+        }
+
+        .right {
+            right: 10px;
+        }
+
+        .dropdown-content {
+            display: none;
+            margin-top: 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: white; /* Solid white background */
+            padding: 20px;
+            box-sizing: border-box;
+            z-index: 2;
+            overflow-y: auto;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .about-text {
+            margin-top: 10px;
+            margin-bottom: 20px;
+            font-size: 18px;
+            color: #333;
+            line-height: 1.5;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .dropbtn {
+            position: relative;
+            top: 0;
+            left: 0;
+            width: 100vw; /* Full viewport width */
+            height: 100vh;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.5s ease;
+            border: 5px solid white;
+            border-radius: 10px;
+        }
+
+        .dropbtn::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0);
+            z-index: 1;
+            transition: background-color 0.5s ease;
+        }
+
+        .dropbtn:hover::before {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .dropbtn:hover {
+            transform: scale(1.05);
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content.show {
+            display: flex;
+            opacity: 1;
+        }
+		.close-btn {
+			position: absolute;
+			top: 10px;
+			right: 10px;
+			background: transparent;
+			color: black;
+			font-size: 24px;
+			border: none;
+			cursor: pointer;
+			z-index: 3;
+		}
+
+		.close-btn:hover {
+			color: red;
+		}
+.video-gallery {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%; /* Full width of the viewport */
+    height: 100vh; /* Take 60% of the viewport height, adjust as needed */
+    overflow: hidden;
+    padding-top: 20px;
+}
+
+/* Video iframe styling */
+.gallery-video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Ensure videos don't stretch, maintain aspect ratio */
+    display: none;
+    transition: opacity 0.5s ease;
+}
+
+/* Add aspect ratio padding to maintain 16:9 aspect ratio */
+.video-gallery-container {
+    position: relative;
+    width: 80%;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio (height/width = 9/16 = 0.5625) */
+    height: 0;
+    overflow: hidden;
+}
+
+.video-gallery-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+
+
+    </style>
+</head>
+<body>
+	 <div class="dropdown">
+        <button id="animations" class="dropbtn" style="background-image: url('phosphene_wink.gif');"></button>
+        <div id="animationex" class="dropdown-content">
+			<button class="close-btn">X</button>
+            <div class="video-gallery">
+                <button class="arrow left" onclick="changeVideo(event, -1)">&#10094;</button>
+                <div class="video-gallery-container">
+                    <!-- Embedding YouTube videos -->
+                    <iframe src="https://www.youtube.com/embed/HnDXGzY0JfQ" class="gallery-video" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/38EXql4OQ_Y" class="gallery-video" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <button class="arrow right" onclick="changeVideo(event, 1)">&#10095;</button>
+            </div>
+            <p class="about-text">
+                Welcome to my portfolio! I'm an artist passionate about creating unique pieces in various styles.
+                I specialize in traditional and digital art, as well as animations.
+            </p>
+        </div> 
+    </div>
+    <!-- Traditional Art Section -->
+    <div class="dropdown">
+        <button id="traditional" class="dropbtn" style="background-image: url('phosphene_paint.jpg');"></button>
+        <div id="traditionalex" class="dropdown-content">
+			<button class="close-btn">X</button>
+            <div class="gallery">
+                <button class="arrow left" onclick="changeImage(event, -1)">&#10094;</button>
+                <img src="traditional/phosphenepaint.jpg" alt="Gallery Image 1" class="gallery-img">
+                <img src="traditional/pitcher.jpg" alt="Gallery Image 2" class="gallery-img">
+                <img src="traditional/sister.jpg" alt="Gallery Image 3" class="gallery-img">
+                <img src="traditional/aurura.jpg" alt="Gallery Image 4" class="gallery-img">
+                <img src="traditional/sunset.jpg" alt="Gallery Image 5" class="gallery-img">
+                <img src="traditional/lavender.jpg" alt="Gallery Image 6" class="gallery-img">
+                <img src="traditional/pot.jpg" alt="Gallery Image 7" class="gallery-img">
+                <img src="traditional/imagination.jpg" alt="Gallery Image 8" class="gallery-img">
+                <button class="arrow right" onclick="changeImage(event, 1)">&#10095;</button>
+            </div>
+            <p class="about-text">
+                Welcome to my portfolio! I'm an artist passionate about creating unique pieces in various styles. 
+                I specialize in traditional and digital art, as well as animations.
+            </p>
+        </div>
+    </div>
+
+    <!-- Digital Art Section -->
+    <div class="dropdown">
+        <button id="digital" class="dropbtn" style="background-image: url('vtuber.PNG');"></button>
+        <div id="digitalex" class="dropdown-content">
+            <div class="gallery">
+                <button class="arrow left" onclick="changeImage(event, -1)">&#10094;</button>
+                <img src="digital/digital1.PNG" alt="Gallery Image 1" class="gallery-img">
+                <img src="digital/miles.jpg" alt="Gallery Image 2" class="gallery-img">
+                <button class="arrow right" onclick="changeImage(event, 1)">&#10095;</button>
+            </div>
+            <p class="about-text">
+                Check out my digital artwork that showcases my imaginative side.
+            </p>
+        </div>
+    </div>
+
+    <script>
+		document.addEventListener('DOMContentLoaded', () => {
+			// Select all dropbtn elements
+			const dropButtons = document.querySelectorAll('.dropbtn');
+
+			// Loop through each dropbtn
+			dropButtons.forEach(button => {
+				button.addEventListener('click', (event) => {
+					// Prevent the click from bubbling up to document (to prevent closing the dropdown immediately)
+					event.stopPropagation();
+
+					// Find the associated dropdown-content
+					const dropdownContent = button.nextElementSibling;
+
+					// Toggle the dropdown-content visibility
+					if (dropdownContent.classList.contains('show')) {
+						dropdownContent.classList.remove('show');
+					} else {
+						// Close all other dropdown-content elements
+						document.querySelectorAll('.dropdown-content').forEach(content => {
+							content.classList.remove('show');
+						});
+						// Show the current dropdown-content
+						dropdownContent.classList.add('show');
+					}
+				});
+			});
+
+			// Close dropdown-content if user clicks outside of any dropdown or arrows
+			document.addEventListener('click', (event) => {
+				const isClickInsideDropdown = event.target.closest('.dropdown');
+				const isClickOnArrow = event.target.closest('.arrow');
+
+				// If the click is outside of the dropdown and not on an arrow, hide all dropdowns
+				if (!isClickInsideDropdown && !isClickOnArrow) {
+					document.querySelectorAll('.dropdown-content').forEach(content => {
+						content.classList.remove('show');
+					});
+				}
+			});
+
+			// Add event listener for close button
+			const closeButtons = document.querySelectorAll('.close-btn');
+			closeButtons.forEach(button => {
+				button.addEventListener('click', (event) => {
+					const dropdownContent = event.target.closest('.dropdown-content');
+					dropdownContent.classList.remove('show');
+				});
+			});
+		});
+
+		// Function to handle image change for each gallery
+		function changeImage(event, direction) {
+			const gallery = event.target.closest('.gallery');
+			const images = gallery.querySelectorAll('.gallery-img');
+			let currentImageIndex = Array.from(images).findIndex(image => image.style.display === 'block');
+
+			// If no image is displayed, show the first image
+			if (currentImageIndex === -1) {
+				currentImageIndex = 0;
+			}
+
+			// Update current image index based on direction
+			currentImageIndex += direction;
+
+			if (currentImageIndex < 0) {
+				currentImageIndex = images.length - 1;
+			} else if (currentImageIndex >= images.length) {
+				currentImageIndex = 0;
+			}
+
+			// Hide all images
+			images.forEach(image => {
+				image.style.display = 'none';
+			});
+
+			// Show the selected image
+			images[currentImageIndex].style.display = 'block';
+		}
+
+		// Initialize galleries to show only the first image
+		document.querySelectorAll('.gallery').forEach(gallery => {
+			const firstImage = gallery.querySelector('.gallery-img');
+			if (firstImage) {
+				firstImage.style.display = 'block';
+			}
+		});
+		// Function to handle video change for each gallery
+function changeVideo(event, direction) {
+    const gallery = event.target.closest('.video-gallery');
+    const videos = gallery.querySelectorAll('.gallery-video');
+    let currentVideoIndex = Array.from(videos).findIndex(video => video.style.display === 'block');
+
+    if (currentVideoIndex === -1) {
+        currentVideoIndex = 0;
+    }
+
+    // Update current video index based on direction
+    currentVideoIndex += direction;
+
+    if (currentVideoIndex < 0) {
+        currentVideoIndex = videos.length - 1;
+    } else if (currentVideoIndex >= videos.length) {
+        currentVideoIndex = 0;
+    }
+
+    // Hide all videos
+    videos.forEach(video => {
+        video.style.display = 'none';
+    });
+
+    // Show the selected video
+    videos[currentVideoIndex].style.display = 'block';
+}
+
+// Initialize videos to show only the first video
+document.querySelectorAll('.video-gallery').forEach(gallery => {
+    const firstVideo = gallery.querySelector('.gallery-video');
+    if (firstVideo) {
+        firstVideo.style.display = 'block';
+    }
+});
+
+    </script>
+
+</body>
+</html>

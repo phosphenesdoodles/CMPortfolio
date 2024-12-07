@@ -1,61 +1,120 @@
-// Get the button, and when the user clicks on it, execute myFunction
-document.getElementById("about").onclick = function() {myFunction()};
+document.addEventListener('DOMContentLoaded', () => {
+    // Select all dropbtn elements
+    const dropButtons = document.querySelectorAll('.dropbtn');
+    
+    // Loop through each dropbtn
+    dropButtons.forEach(button => {
+        button.addEventListener('click', (event) => {
+            // Prevent the click from bubbling up to document (to prevent closing the dropdown immediately)
+            event.stopPropagation();
 
-// myFunction toggles between adding and removing the show class, which is used to hide and show the dropdown content 
-function myFunction() {
-    document.getElementById("myDropdown").classList.toggle("show");
-}
+            // Find the associated dropdown-content
+            const dropdownContent = button.nextElementSibling;
 
-// Close the dropdown if the user clicks outside of it
-window.onclick = function(event) {
-    if (!event.target.matches('.dropbtn')) {
-
-        var dropdowns = document.getElementsByClassName("dropdown-content");
-        var i;
-        for (i = 0; i < dropdowns.length; i++) {
-            var openDropdown = dropdowns[i];
-            if (openDropdown.classList.contains('show')) {
-                openDropdown.classList.remove('show');
+            // Toggle the dropdown-content visibility
+            if (dropdownContent.classList.contains('show')) {
+                dropdownContent.classList.remove('show');
+            } else {
+                // Close all other dropdown-content elements
+                document.querySelectorAll('.dropdown-content').forEach(content => {
+                    content.classList.remove('show');
+                });
+                // Show the current dropdown-content
+                dropdownContent.classList.add('show');
             }
-        }
-    }
-}
- /* const box1 = document.getElementById('box1');
-    const box2 = document.getElementById('box2');
-    const container = document.querySelector('.container');
-    let currentBox = 1; // Track which box is currently visible
-
-    function showBox2() {
-      box1.classList.remove('slide-center');
-      box1.classList.add('slide-left');
-      box2.classList.remove('slide-right');
-      box2.classList.add('slide-center');
-      currentBox = 2;
-    }
-
-    function showBox1(event) {
-      // Ensure the click is outside of box2
-      if (!box2.contains(event.target)) {
-        box2.classList.remove('slide-center');
-        box2.classList.add('slide-right');
-        box1.classList.remove('slide-left');
-        box1.classList.add('slide-center');
-        currentBox = 1;
-      }
-    }
-
-    // Add event listener for box1 click
-    box1.addEventListener('click', showBox2);
-
-    // Add event listener for clicks on the container
-    container.addEventListener('click', (event) => {
-      if (currentBox === 2) {
-        showBox1(event);
-      }
+        });
     });
 
-    // Prevent clicks inside box2 from triggering the container click event
-    box2.addEventListener('click', (event) => {
-      event.stopPropagation();
-    });*/
+    // Close dropdown-content if user clicks outside of any dropdown or arrows
+    document.addEventListener('click', (event) => {
+        const isClickInsideDropdown = event.target.closest('.dropdown');
+        const isClickOnArrow = event.target.closest('.arrow');
 
+        // If the click is outside of the dropdown and not on an arrow, hide all dropdowns
+        if (!isClickInsideDropdown && !isClickOnArrow) {
+            document.querySelectorAll('.dropdown-content').forEach(content => {
+                content.classList.remove('show');
+            });
+        }
+    });
+
+    // Add event listener for close button
+    const closeButtons = document.querySelectorAll('.close-btn');
+    closeButtons.forEach(button => {
+        button.addEventListener('click', (event) => {
+            const dropdownContent = event.target.closest('.dropdown-content');
+            dropdownContent.classList.remove('show');
+        });
+    });
+});
+
+// Function to handle image change for each gallery
+function changeImage(event, direction) {
+    const gallery = event.target.closest('.gallery');
+    const images = gallery.querySelectorAll('.gallery-img');
+    let currentImageIndex = Array.from(images).findIndex(image => image.style.display === 'block');
+
+    // If no image is displayed, show the first image
+    if (currentImageIndex === -1) {
+        currentImageIndex = 0;
+    }
+
+    // Update current image index based on direction
+    currentImageIndex += direction;
+
+    if (currentImageIndex < 0) {
+        currentImageIndex = images.length - 1;
+    } else if (currentImageIndex >= images.length) {
+        currentImageIndex = 0;
+    }
+
+    // Hide all images
+    images.forEach(image => {
+        image.style.display = 'none';
+    });
+
+    // Show the selected image
+    images[currentImageIndex].style.display = 'block';
+}
+
+// Initialize galleries to show only the first image
+document.querySelectorAll('.gallery').forEach(gallery => {
+    const firstImage = gallery.querySelector('.gallery-img');
+    if (firstImage) {
+        firstImage.style.display = 'block';
+    }
+});
+function changeVideo(event, direction) {
+    const gallery = event.target.closest('.video-gallery');
+    const videos = gallery.querySelectorAll('.gallery-video');
+    let currentVideoIndex = Array.from(videos).findIndex(video => video.style.display === 'block');
+
+    if (currentVideoIndex === -1) {
+        currentVideoIndex = 0;
+    }
+
+    // Update current video index based on direction
+    currentVideoIndex += direction;
+
+    if (currentVideoIndex < 0) {
+        currentVideoIndex = videos.length - 1;
+    } else if (currentVideoIndex >= videos.length) {
+        currentVideoIndex = 0;
+    }
+
+    // Hide all videos
+    videos.forEach(video => {
+        video.style.display = 'none';
+    });
+
+    // Show the selected video
+    videos[currentVideoIndex].style.display = 'block';
+}
+
+// Initialize videos to show only the first video
+document.querySelectorAll('.video-gallery').forEach(gallery => {
+    const firstVideo = gallery.querySelector('.gallery-video');
+    if (firstVideo) {
+        firstVideo.style.display = 'block';
+    }
+});

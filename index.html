@@ -21,17 +21,10 @@
 
   <main>
     <!-- About Me Section -->
-    <!--<section id="about" class="cover" style="background-image: url('phosphene_1.PNG');" onclick="toggleInfo(this)">
-  		<div id="about-container" class="text-box">
-   			<p class="about-text">
-     		Welcome to my portfolio! I'm an artist passionate about creating unique pieces in various styles. 
-      		I specialize in traditional and digital art, as well as animations.
-   		 	</p>
- 		</div>
-	</section>-->
 	<div class="dropdown">
     	<button id="about" class="dropbtn" style="background-image: url('phosphene_1.PNG');"></button>
-    	<div id="myDropdown" class="dropdown-content">
+    	<div id="aboutme" class="dropdown-content">
+			<button class="close-btn">X</button>
 			<div class="gallery">
 			  <img src="pfp.jpg" alt="Gallery Image 1">
 			</div>
@@ -41,42 +34,70 @@
    		 	</p>
     	</div> 
     </div> 
-	<!--<div class="container">
-	  <div id="box1" class="box box1">Click to switch to Box 2</div>
-	  <div id="box2" class="box box2">
-		<div class="gallery">
-		  <img src="image1.jpg" alt="Gallery Image 1">
-		  <img src="image2.jpg" alt="Gallery Image 2">
-		  <img src="image3.jpg" alt="Gallery Image 3">
-		</div>
-	  </div>
-	</div> -->
-
 
 
     <!-- Animations Section -->
-    <section id="animations" class="cover" style="background-image: url('phosphene_wink.gif');">
-      <div class="text-box">
-        <h1>Animations</h1>
-        <p>Explore my animations that bring creativity to life.</p>
-      </div>
-    </section>
+	 <div class="dropdown">
+        <button id="animations" class="dropbtn" style="background-image: url('phosphene_wink.gif');"></button>
+        <div id="animationex" class="dropdown-content">
+			<button class="close-btn">X</button>
+            <div class="video-gallery">
+                <button class="arrow left" onclick="changeVideo(event, -1)">&#10094;</button>
+                <div class="video-gallery-container">
+                    <!-- Embedding YouTube videos -->
+                    <iframe src="https://www.youtube.com/embed/HnDXGzY0JfQ" class="gallery-video" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/38EXql4OQ_Y" class="gallery-video" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <button class="arrow right" onclick="changeVideo(event, 1)">&#10095;</button>
+            </div>
+            <p class="about-text">
+                Welcome to my portfolio! I'm an artist passionate about creating unique pieces in various styles.
+                I specialize in traditional and digital art, as well as animations.
+            </p>
+        </div> 
+    </div>
 
-    <!-- Traditional Section -->
-    <section id="traditional" class="cover" style="background-image: url('phosphene_paint.jpg');">
-      <div class="text-box">
-        <h1>Traditional Art</h1>
-        <p>Take a look at my traditional art pieces crafted with love and skill.</p>
-      </div>
-    </section>
+     <!-- Traditional Art Section -->
+    <div class="dropdown">
+        <button id="traditional" class="dropbtn" style="background-image: url('phosphene_paint.jpg');"></button>
+        <div id="traditionalex" class="dropdown-content">
+			<button class="close-btn">X</button>
+            <div class="gallery">
+                <button class="arrow left" onclick="changeImage(event, -1)">&#10094;</button>
+                <img src="traditional/phosphenepaint.jpg" alt="Gallery Image 1" class="gallery-img">
+                <img src="traditional/pitcher.jpg" alt="Gallery Image 2" class="gallery-img">
+                <img src="traditional/sister.jpg" alt="Gallery Image 3" class="gallery-img">
+                <img src="traditional/aurura.jpg" alt="Gallery Image 4" class="gallery-img">
+                <img src="traditional/sunset.jpg" alt="Gallery Image 5" class="gallery-img">
+                <img src="traditional/lavender.jpg" alt="Gallery Image 6" class="gallery-img">
+                <img src="traditional/pot.jpg" alt="Gallery Image 7" class="gallery-img">
+                <img src="traditional/imagination.jpg" alt="Gallery Image 8" class="gallery-img">
+                <button class="arrow right" onclick="changeImage(event, 1)">&#10095;</button>
+            </div>
+            <p class="about-text">
+                Welcome to my portfolio! I'm an artist passionate about creating unique pieces in various styles. 
+                I specialize in traditional and digital art, as well as animations.
+            </p>
+        </div>
+    </div>
 
-    <!-- Digital Section -->
-    <section id="digital" class="cover" style="background-image: url('vtuber.PNG');">
-      <div class="text-box">
-        <h1>Digital Art</h1>
-        <p>Check out my digital artwork that showcases my imaginative side.</p>
-      </div>
-    </section>
+    <!-- Digital Art Section -->
+    <div class="dropdown">
+        <button id="digital" class="dropbtn" style="background-image: url('vtuber.PNG');"></button>
+        <div id="digitalex" class="dropdown-content">
+			<button class="close-btn">X</button>
+            <div class="gallery">
+                <button class="arrow left" onclick="changeImage(event, -1)">&#10094;</button>
+                <img src="digital/digital1.PNG" alt="Gallery Image 1" class="gallery-img">
+                <img src="digital/miles.jpg" alt="Gallery Image 2" class="gallery-img">
+                <button class="arrow right" onclick="changeImage(event, 1)">&#10095;</button>
+            </div>
+            <p class="about-text">
+                Check out my digital artwork that showcases my imaginative side.
+            </p>
+        </div>
+    </div>
+
 
     <!-- Contact Section -->
     <section id="contact" class="cover" style="background-image: url('phosphene_contact.png');">
