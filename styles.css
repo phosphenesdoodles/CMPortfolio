@@ -248,7 +248,7 @@ header nav ul li a:hover {
     justify-content: center;
     align-items: center;
     width: 100%; /* Full width of the viewport */
-    height: 100vh; /* Take 60% of the viewport height, adjust as needed */
+    height: 100vh; /* Take 100% of the viewport height */
     overflow: hidden;
     padding-top: 20px;
 }
@@ -265,19 +265,20 @@ header nav ul li a:hover {
 /* Add aspect ratio padding to maintain 16:9 aspect ratio */
 .video-gallery-container {
     position: relative;
+    display: flex;
+    justify-content: center; /* Center the iframe horizontally */
+    align-items: center; /* Center the iframe vertically */
     width: 80%;
-    padding-bottom: 56.25%; /* 16:9 aspect ratio (height/width = 9/16 = 0.5625) */
-    height: 0;
+    height: 100%; /* Adjust the height as needed */
     overflow: hidden;
 }
 
 .video-gallery-container iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    width: 50%; /* Ensure iframe is responsive */
+    height: 50%; /* Ensure iframe is responsive */
+    object-fit: contain; /* Maintain aspect ratio */
 }
+
 
 
 form input, form textarea {
