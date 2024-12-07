@@ -37,17 +37,32 @@ header nav ul {
 header nav ul li {
   display: inline;
   margin: 0 15px;
+  color: white;
+  font-size: 50px;
 }
 
 header nav ul li a {
   text-decoration: none;
   color: white;
-  font-weight: bold;
+  font-size: 24px;
 }
 
 header nav ul li a:hover {
   text-decoration: underline;
 }
+header {
+  background: linear-gradient(90deg, #ff0c2c, #ff871a, #fcdd1d, #bdfb74, #6499ff, #e627ff, #ff1e9d);
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  font-family: "titlefont", sans-serif;
+  font-size: 30px;
+  border: 5px solid white;
+  box-sizing: border-box;
+  border-radius: 20px;
+}
+
 
 .gallery {
     position: relative;
@@ -91,7 +106,7 @@ header nav ul li a:hover {
     display: none;
     margin-top: 0px;
     position: fixed;
-    top: 60px;
+    top: 100px;
     left: 0;
     width: 100vw;
     height: 100vh;
@@ -163,7 +178,7 @@ header nav ul li a:hover {
     overflow: hidden;
     cursor: pointer;
     transition: transform 0.5s ease;
-    border: 5px solid white;
+    border: 100px solid white;
     border-radius: 10px;
 }
 
