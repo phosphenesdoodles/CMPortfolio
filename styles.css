@@ -12,7 +12,7 @@ body {
 }
 @font-face{
     font-family:titlefont;    
-    src: url("billo.ttf");
+    src: url("billo.TTF");
 }
 header {
   background: linear-gradient(90deg, #ff0c2c, #ff871a, #fcdd1d, #bdfb74, #6499ff, #e627ff, #ff1e9d);
